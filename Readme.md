@@ -1,12 +1,10 @@
 # Refactoring
 
-Consider the form below, a simple one, given by the link below. 
-
----> LINK
+Consider the form given by the [link](https://helloncanella.github.io/without-username/)
 
 Beautiful, isn't ?
 
-Its features are restricted to the exibition of three inputs, validated when the submission button is pressed.
+Its features are restricted to the exhibition of three inputs, validated when we press the submission button.
 
 One of the ways to model it using React is shown here,
 
@@ -100,15 +98,15 @@ export default class Form extends Component {
 ```
 
 
-A really patient reading of the code above inform us the component is responsible for to render the inputs, to validate its data and to send it somewhere. 
+A patient and attentive reading of the code above inform us the component is responsible for the rendering of the inputs, validation of its data and the sending of it to somewhere. 
 
-In fact it works. However, to assign too much responsabilities for a single component can make the mantanability a difficult task.
+In fact, it works. However, to assign too many responsibilities to a single component can make the maintainability a difficult task.
 
-Just the introduction of one single field and another validation rule require significant changes, violating the "Open/Closed principle"(insert link).
+Just the introduction of one single field and another validation rule require significant changes, violating the [Open/Closed principle]([https://en.wikipedia.org/wiki/Open/closed_principle).
 
-A mantanability of this component can be hugely improved if you share its responsabilities between other classes.
+The maintainability of this component can be improved if we share its responsibilities between other classes.
 
-So, the task of show the inputs and expose its data can be restricted to the same Form component, that will receive by props the instruction to render its inputs.
+So, the task of display the inputs and expose its data can be restricted to the same Form component, that will receive by `props` the instruction to render its `fieldsets`.
 
 ```javascript
 import React, { Component } from 'react'
@@ -258,7 +256,7 @@ export default FormWrapper
 
 ```
 
-As we can see the validation is done by a auxiliar class ``
+As we can see below, the validation is done by an auxiliary class `FieldsetsValidator`, that verifies if one of the fields are empty and activates the validation of each one.
 
 ```javascript
 import fieldsets from './fieldsets.js'
@@ -311,12 +309,6 @@ const validateUsername = ({ username }) => {
 
 const fieldsets = [
     {
-        name: "username",
-        inputs: [{ name: 'username', type: 'text', placeholder: "username" }],
-        validator: validateUsername
-    },
-
-    {
         name: "email",
         inputs: [{ name: 'email', type: 'text', placeholder: "email" }],
         validator: validateEmail
@@ -336,13 +328,38 @@ const fieldsets = [
 export default fieldsets
 ```
 
-In the future, for example, we can insert a username field and require its value cannot be numerical. With a simple insertion in `fieldsets`, we can do it. The result is given below. 
+In the future, for example, we can insert a username field and require its value cannot be numerical. With a simple insertion in `fieldsets`, we can do it. 
 
-link
+```javascript
+const fieldsets = [
+    {
+        name: "username",
+        inputs: [{ name: 'username', type: 'text', placeholder: "username" }],
+        validator: validateUsername
+    }
+
+    {
+        name: "email",
+        inputs: [{ name: 'email', type: 'text', placeholder: "email" }],
+        validator: validateEmail
+    },
+
+    {
+        name: "passwords",
+        validator: validatePasswords,
+        inputs: [
+            { name: 'password', type: 'password', placeholder: "password" },
+            { name: 'confirmation', type: 'password', placeholder: "password confirmation" }
+        ],
+    }
+]
+```
 
 
-Considering just the number of lines, the solution presented is more verbose. However, futures modifications, such the insertion of more fields and validation rules can add more complexibilities, making the component more prone to errors. The solution adopted avoids theses risks, at same time improves its readablity. 
- 
+The result is available [here](https://helloncanella.github.io/with-username/)
+
+
+In fact, the solution presented is more verbose. However, futures modifications, such the insertion of more fields and validation rules can add more complexity, making the component more prone to errors. The solution adopted avoids theses risks, at the same time it improves its readability.  
 
 
 
