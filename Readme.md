@@ -356,10 +356,10 @@ const fieldsets = [
 ```
 
 
-The result is available [here](https://helloncanella.github.io/with-username/)
+The result is available [here](https://helloncanella.github.io/with-username/).
 
 
-In fact, the solution presented is more verbose. However, futures modifications, such the insertion of more fields and validation rules can add more complexity, making the component more prone to errors. The solution adopted avoids theses risks, at the same time it improves its readability.  
+In fact, the solution presented is more verbose. However, in futures modifications, such as the insertion of more fields and validation rules can add more complexity, making the component more prone to errors. The solution adopted avoids theses risks, at the same time it improves its readability.  
 
 
 
