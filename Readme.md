@@ -1,6 +1,6 @@
 # Refactoring a beautiful form
 
-Consider the form given by the [link](https://helloncanella.github.io/without-username/)
+Consider the form given by the [link](https://helloncanella.github.io/without-username/).
 
 Beautiful, isn't ?
 
@@ -102,7 +102,7 @@ A patient and attentive reading of the code above inform us the component is res
 
 In fact, it works. However, to assign too many responsibilities to a single component can make the maintainability a difficult task.
 
-Just the introduction of one single field and another validation rule require significant changes, violating the [Open/Closed principle]([https://en.wikipedia.org/wiki/Open/closed_principle).
+Just the introduction of one single field and another validation rule require significant changes, violating the [Open/Closed principle](https://en.wikipedia.org/wiki/Open/closed_principle) .
 
 The maintainability of this component can be improved if we share its responsibilities between other classes.
 
