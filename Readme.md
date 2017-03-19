@@ -1,4 +1,4 @@
-#Refactoring a beautiful form
+#Refactoring
 
 Consider the form below, a simple one, given by the link below. 
 
